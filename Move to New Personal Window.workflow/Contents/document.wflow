@@ -51,10 +51,11 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>source</key>
-					<string>on run {input, parameters}    
+					<string>
+on run {input, parameters}
 	
 	-- Get the current URLs and tabs.
-    tell application "Safari"
+		tell application "Safari"
 
 		activate
 		delay 0.5
@@ -66,37 +67,38 @@
 		--display dialog tabCount		
 		--display dialog currentTabIndex
 		--display dialog currentTabURL        
-    end tell
+		end tell
 
-    -- Close the tab or window.
-    tell application "Safari"  
+		-- Close the tab or window.
+		tell application "Safari"  
 		if tabCount &gt; 1 then
-            tell window -1 to close tab currentTabIndex
-        else
-            close window -1
-        end if
-    end tell
+						tell window -1 to close tab currentTabIndex
+				else
+						close window -1
+				end if
+		end tell
 
-	-- Open Profile using keyboard shortcuts.    
+	-- Open Profile using keyboard shortcuts.
 	tell application "System Events" to tell process "Safari"
 		
 		-- Set CMD+ALT+&lt;Character&gt; to open desired profile in Keyboard Shortcuts using App Shortcuts.
 		keystroke "p" using {command down, option down}
 		delay 2
-    end tell
+		end tell
 	
 	-- Paste the URL into the new profile window.
 	tell application "System Events"
 	
-        set the clipboard to currentTabURL
+				set the clipboard to currentTabURL
 		delay 0.2
 		
 		keystroke "v" using {command down}
 		delay 0.2
 		
 		keystroke return
-    end tell
-end run</string>
+		end tell
+end run
+				</string>
 				</dict>
 				<key>BundleIdentifier</key>
 				<string>com.apple.Automator.RunScript</string>
